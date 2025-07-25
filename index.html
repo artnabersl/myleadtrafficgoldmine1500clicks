@@ -1,12 +1,12 @@
-<div style="background-color: black; color: black; font-weight: bold; padding: 20px;">
+<div style="background-color: black; color: black; font-weight: bold; padding: 20px; font-family: Arial, sans-serif;">
   <div style="background-color: #ffff00; padding: 15px; border: 2px solid black;">
-    <h1 style="color: black; text-align: center; font-size: 2.5em; margin-bottom: 20px; font-weight: 900;">
+    <h1 style="color: black; text-align: center; font-size: 2.8em; margin-bottom: 20px; font-weight: 900; font-family: 'Arial Black', Gadget, sans-serif; text-transform: uppercase; letter-spacing: 1px;">
       BUYER TRAFFIC
     </h1>
     
-    <h2 style="text-align: center; font-size: 1.5em; margin-bottom: 20px;">Success Rolodex</h2>
+    <h2 style="text-align: center; font-size: 1.5em; margin-bottom: 20px; font-family: 'Arial Black', Gadget, sans-serif;">Success Rolodex</h2>
     
-    <p style="text-align: center; font-size: 1.3em; margin-bottom: 20px; color: red;">
+    <p style="text-align: center; font-size: 1.3em; margin-bottom: 20px; color: red; font-weight: bold;">
       These Are The Traffic Resources That Bring Me Leads And Sales Every Day!
     </p>
     
@@ -14,53 +14,53 @@
       I'm going to GIVE THIS INFORMATION AWAY For...
     </p>
     
-    <div style="text-align: center; margin-bottom: 20px; animation: blink 1s step-end infinite;">
-      <img src="https://imgallery.llsvr.com/5ee5b3280a435.png" alt="Buyer Traffic Generation" style="max-width: 100%;">
+    <div style="text-align: center; margin-bottom: 20px; animation: blink 1.5s ease-in-out infinite;">
+      <img src="https://imgallery.llsvr.com/5ee5b3280a435.png" alt="Buyer Traffic Generation" style="max-width: 100%; border: 3px solid black; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
     </div>
     
-    <h2 style="color: black; text-align: center; font-size: 1.8em; margin-bottom: 20px;">
+    <h2 style="color: black; text-align: center; font-size: 1.8em; margin-bottom: 20px; font-family: 'Arial Black', Gadget, sans-serif;">
       BEST AUTOPILOT BUYERS TRAFFIC
     </h2>
     
-    <div style="background-color: white; padding: 15px; margin: 20px 0; border: 2px solid black; max-width: 400px; margin-left: auto; margin-right: auto;">
+    <div style="background-color: white; padding: 20px; margin: 20px auto; border: 2px solid black; max-width: 350px;">
       <form method="post" action="https://www.sendsteed.com/subscribe/">
-        <input name="e112051" required type="text" placeholder="your@email.com" style="display: block; width: 80%; margin: 10px auto; padding: 8px; border: 2px solid black;">
-        <input name="n112051" required type="text" placeholder="Name" style="display: block; width: 80%; margin: 10px auto; padding: 8px; border: 2px solid black;">
+        <input name="e112051" required type="text" placeholder="your@email.com" style="display: block; width: 90%; margin: 10px auto; padding: 10px; border: 2px solid black; font-size: 0.9em;">
+        <input name="n112051" required type="text" placeholder="Name" style="display: block; width: 90%; margin: 10px auto; padding: 10px; border: 2px solid black; font-size: 0.9em;">
         <input type="hidden" name="lllid" value="112051">
         <input type="hidden" name="lluid" value="sandyarta">
         <input type="hidden" name="redirect" value="">
         <input type="hidden" name="source" value="" id="trafficSource">
-        <button type="submit" style="background-color: #ffff00; color: black; font-weight: bold; padding: 10px 20px; border: 2px solid black; cursor: pointer; width: 80%; margin: 0 auto; display: block;">Submit</button>
+        <button type="submit" style="background-color: #ffff00; color: black; font-weight: bold; padding: 12px 20px; border: 2px solid black; cursor: pointer; width: 90%; margin: 10px auto; display: block; font-family: 'Arial Black', Gadget, sans-serif; font-size: 1em;">SUBMIT NOW</button>
       </form>
     </div>
     
-    <p style="text-align: center; font-size: 1.1em;">source: <span id="sourceDisplay">buyerseitemailerstreg</span></p>
+    <p style="text-align: center; font-size: 1.1em; font-family: Arial, sans-serif;">source: <span id="sourceDisplay">buyerseitemailerstreg</span></p>
   </div>
 </div>
 
 <style>
   @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0.3; }
-    100% { opacity: 1; }
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Arial+Black&display=swap');
+  
+  body {
+    font-family: Arial, sans-serif;
   }
 </style>
 
 <script>
-  // Automatische Source-Erkennung
   document.addEventListener('DOMContentLoaded', function() {
-    // URL-Parameter auslesen
     const urlParams = new URLSearchParams(window.location.search);
     let source = urlParams.get('utm_source') || 
                 urlParams.get('source') || 
                 urlParams.get('ref') || 
                 'buyerseitemailerstreg';
     
-    // Source in Formular und Anzeige einfügen
     document.getElementById('trafficSource').value = source;
     document.getElementById('sourceDisplay').textContent = source;
-    
-    // Weitere Tracking-Parameter können hier ergänzt werden
-    console.log('Traffic source detected:', source);
   });
 </script>
