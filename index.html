@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Traffic Generation</title>
+    <style>
+        @keyframes blink {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
 <div style="background-color: black; color: black; font-weight: bold; padding: 20px; font-family: Arial, sans-serif;">
   <div style="background-color: #ffff00; padding: 15px; border: 2px solid black;">
     <h1 style="color: black; text-align: center; font-size: 2.8em; margin-bottom: 20px; font-weight: 900; font-family: 'Arial Black', Gadget, sans-serif; text-transform: uppercase; letter-spacing: 1px;">
@@ -23,13 +43,13 @@
     </h2>
     
     <div style="background-color: white; padding: 20px; margin: 20px auto; border: 2px solid black; max-width: 350px;">
-      <form method="post" action="https://www.sendsteed.com/subscribe/">
-        <input name="e112051" required type="text" placeholder="your@email.com" style="display: block; width: 90%; margin: 10px auto; padding: 10px; border: 2px solid black; font-size: 0.9em;">
+      <form method="post" action="https://www.sendsteed.com/subscribe/" id="leadForm">
+        <input name="e112051" required type="email" placeholder="your@email.com" style="display: block; width: 90%; margin: 10px auto; padding: 10px; border: 2px solid black; font-size: 0.9em;">
         <input name="n112051" required type="text" placeholder="Name" style="display: block; width: 90%; margin: 10px auto; padding: 10px; border: 2px solid black; font-size: 0.9em;">
         <input type="hidden" name="lllid" value="112051">
         <input type="hidden" name="lluid" value="sandyarta">
         <input type="hidden" name="redirect" value="">
-        <input type="hidden" name="source" value="" id="trafficSource">
+        <input type="hidden" name="source" id="trafficSource" value="">
         <button type="submit" style="background-color: #ffff00; color: black; font-weight: bold; padding: 12px 20px; border: 2px solid black; cursor: pointer; width: 90%; margin: 10px auto; display: block; font-family: 'Arial Black', Gadget, sans-serif; font-size: 1em;">SUBMIT NOW</button>
       </form>
     </div>
@@ -38,29 +58,47 @@
   </div>
 </div>
 
-<style>
-  @keyframes blink {
-    0% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.02); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-  
-  @import url('https://fonts.googleapis.com/css2?family=Arial+Black&display=swap');
-  
-  body {
-    font-family: Arial, sans-serif;
-  }
-</style>
-
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    let source = urlParams.get('utm_source') || 
-                urlParams.get('source') || 
-                urlParams.get('ref') || 
-                'buyerseitemailerstreg';
+    // 1. Traffic-Quelle automatisch erkennen
+    function detectTrafficSource() {
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // Priorität: URL-Parameter > Referrer > direkter Zugriff
+      let source = urlParams.get('utm_source') || 
+                  urlParams.get('source') || 
+                  urlParams.get('ref') || 
+                  document.referrer || 
+                  'direct';
+      
+      // Quelle bereinigen
+      if (source.includes('http')) {
+        try {
+          const url = new URL(source);
+          source = url.hostname.replace('www.', '');
+        } catch(e) {
+          source = source.substring(0, 50);
+        }
+      }
+      
+      return source;
+    }
     
-    document.getElementById('trafficSource').value = source;
-    document.getElementById('sourceDisplay').textContent = source;
+    const detectedSource = detectTrafficSource();
+    
+    // 2. Quelle in Formular und Anzeige einfügen
+    document.getElementById('trafficSource').value = detectedSource;
+    document.getElementById('sourceDisplay').textContent = detectedSource;
+    
+    // 3. Cookie für 30 Tage setzen
+    document.cookie = `traffic_source=${encodeURIComponent(detectedSource)}; max-age=${30*24*60*60}; path=/`;
+    
+    // 4. Formular absenden tracking (optional)
+    document.getElementById('leadForm').addEventListener('submit', function() {
+      console.log('Lead submitted with source:', detectedSource);
+      // Hier können Sie zusätzliches Tracking einfügen (z.B. Google Analytics)
+    });
   });
 </script>
+</body>
+</html>
